@@ -39,7 +39,7 @@ export const theme = createTheme({
     success: { main: '#539713' },
     black: '#1d283a',
     violet: '#d4ccf1',
-    blue: '#69b0ff',
+    blue: '#0062ff',
     orange: '#f08e5b',
     red: '#ee5e5e',
     green: {
