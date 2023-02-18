@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import Sidebar from '@ui/Sidebar'
+import { ThemeProvider } from '@mui/material'
 import { AuthContext } from '@components/Contexts/AuthContext'
 import { BrowserRouter } from 'react-router-dom'
+import {theme} from '.././theme'
 
 describe('User', () => {
   it('not logged in user', () => {
@@ -14,7 +16,9 @@ describe('User', () => {
     render(
       <BrowserRouter>
         <AuthContext.Provider value={user}>
+        <ThemeProvider theme={theme}>
           <Sidebar />
+        </ThemeProvider>
         </AuthContext.Provider>
       </BrowserRouter>
     )

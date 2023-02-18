@@ -1,6 +1,5 @@
-import { Box, MenuItem, MenuList } from '@mui/material'
+import { Box, MenuItem, MenuList, styled } from '@mui/material'
 import { DropDownItem } from '@components/UI/Sidebar/Menu/DropDownItem'
-import styled from '@emotion/styled'
 
 const menuData = {
   items: [
