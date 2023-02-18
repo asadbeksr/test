@@ -29,11 +29,11 @@ export const Input = ({
       size='small'
       sx={{
         label: {
-          color: theme.palette.disabled,
+          color: theme.palette.gray.main,
           fontSize: '16px',
         },
         input: {
-          color: theme.palette.disabled,
+          color: theme.palette.gray.main,
           fontSize: '16px',
         },
         '& .MuiFormHelperText-root': {

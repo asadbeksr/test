@@ -5,6 +5,7 @@ import {
 import { Link, useLocation } from 'react-router-dom'
 import { MenuItemTS } from '@utils/types'
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material'
+import { theme } from '../../../../theme'
 
 interface DropDownItemProps {
   item: MenuItemTS
@@ -75,7 +76,7 @@ export const DropDownItem = ({ item }: DropDownItemProps) => {
   } else {
     return (
       <LinkItem to={item.href || '#'}>
-        <Typography sx={isActivePage ? { backgroundColor: 'rgba(255, 255, 255, 0.2)' } : {}}>
+        <Typography sx={isActivePage ? { backgroundColor: theme.palette.bgr} : {}}>
           {item.label}
         </Typography>
       </LinkItem>

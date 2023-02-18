@@ -12,6 +12,10 @@ declare module '@mui/material/styles' {
       lighter: string
       border: string
     }
+    gray: {
+      light: string
+      main: string
+    }
     white: string
     bgr: string
     disabled: string
@@ -28,6 +32,10 @@ declare module '@mui/material/styles' {
       lighter: string
       border: string
     }
+    gray: {
+      light: string
+      main: string
+    }
     white: string
     bgr: string
     disabled: string
@@ -39,7 +47,7 @@ export const theme = createTheme({
     success: { main: '#539713' },
     black: '#1d283a',
     violet: '#d4ccf1',
-    blue: '#0062ff',
+    blue: '#0775b4',
     orange: '#f08e5b',
     red: '#ee5e5e',
     green: {
@@ -47,8 +55,12 @@ export const theme = createTheme({
       lighter: '#b2d0ad',
       border: '#58F83B',
     },
+    gray: {
+      light: '#d3d3d3',
+      main: '#696969',
+    },
     white: '#ffffff',
-    bgr: '#f5f5f5',
+    bgr: '#ffffff33',
     disabled: '#a19eaa',
   },
   spacing: [4, 8, 16, 24, 32, 64],

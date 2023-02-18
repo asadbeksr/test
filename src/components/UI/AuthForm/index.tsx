@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@utils/constants'
 import { LoadingButton } from '@mui/lab'
 import { useLogin } from '../../../services/auth.service'
+import { theme } from '../../../theme'
 
 const SignWrapper = styled(Box)(({ theme }) => ({
   width: '350px',
@@ -24,13 +25,13 @@ const SignWrapper = styled(Box)(({ theme }) => ({
 const Title = styled(Typography)(({ theme }) => ({
   padding: '60px 0 30px',
   fontWeight: 'bold',
-  color: theme.palette.disabled,
+  color: theme.palette.gray.main,
   borderBottom: `1px solid ${theme.palette.bgr}`,
 }))
 
 const  Subtitle = styled(Typography)(({ theme }) => ({
   padding: '30px',
-  color: theme.palette.disabled,
+  color: theme.palette.gray.main,
 }))
 
 const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
@@ -163,7 +164,7 @@ export const AuthForm = () => {
       {error && (
         <Typography
           variant='h6'
-          sx={{ color: 'red', mt: 2 }}
+          sx={{ color: theme.palette.red, mt: 2 }}
         >
           {error.message}
         </Typography>
