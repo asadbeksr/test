@@ -51,7 +51,7 @@ export const Menu = () => {
   const { items } = menuData
 
   return (
-    <MenuWrapper>
+    <MenuWrapper data-testid="sidebar-menu">
       <SMenuList>
         {items.map((item, index) => (
           <SMenuItem

@@ -22,12 +22,12 @@ export const Footer = () => {
   return (
     <Box sx={{ marginTop: 'auto', width: '100%' }}>
       {user ? (
-        <PrimaryButton onClick={logout} variant='contained'>
+        <PrimaryButton onClick={logout} variant='contained' data-testid='logout-button-sidebar'>
           Log Out
         </PrimaryButton>
       ) : (
         <Link to={ROUTES.SIGN_IN}>
-          <PrimaryButton variant='contained'>Log In</PrimaryButton>
+          <PrimaryButton variant='contained'  data-testid='login-button-sidebar'>Log In</PrimaryButton>
         </Link>
       )}
     </Box>
