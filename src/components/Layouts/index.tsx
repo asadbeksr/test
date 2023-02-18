@@ -5,13 +5,13 @@ import {
   styled
 } from '@mui/material'
 
-const Wrapper = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-  width: 100vw;
-  background-color: #ffffff;
-`
+const Wrapper = styled(Box)(({theme}) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  height: '100vh',
+  width: '100vw',
+  backgroundColor: theme.palette.white
+}))
 
 const Layout = ({children}: {children: ReactElement}) => {
   return (
