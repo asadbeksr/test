@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import MainProvider from '@components/Providers'
 import Sidebar from '@ui/Sidebar'
 
-describe('Sidebar', () => {
+describe('Sidebar component', () => {
   beforeEach(() => {
     render(
       <MainProvider>
@@ -11,11 +11,13 @@ describe('Sidebar', () => {
     )
   })
 
-  it('render sidebar', () => {
-    expect(screen.getByTestId('sidebar')).toBeInTheDocument()
+  test('renders sidebar component', () => {
+    const sidebar = screen.queryByTestId('sidebar')
+    expect(sidebar).toBeInTheDocument()
   })
 
-  it('render sidebar header', () => {
-    expect(screen.getByText('Hello System')).toBeInTheDocument()
+  test('render sidebar header', () => {
+    const header = screen.getByRole('heading', { name: 'Hello System' })
+    expect(header).toBeInTheDocument()
   })
 })
