@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  IconButton, InputAdornment, TextField, TextFieldProps
+  IconButton, InputAdornment, TextField, TextFieldProps, useTheme
 } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { LoginPayload } from 'src/services/auth.service'
@@ -16,6 +16,7 @@ type InputProps = TextFieldProps & {
 export const Input = ({
   isPassword = false, formName, control, ...props
 }: InputProps) => {
+  const theme = useTheme();
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -28,11 +29,11 @@ export const Input = ({
       size='small'
       sx={{
         label: {
-          color: 'dimgray',
+          color: theme.palette.disabled,
           fontSize: '16px',
         },
         input: {
-          color: 'dimgray',
+          color: theme.palette.disabled,
           fontSize: '16px',
         },
         '& .MuiFormHelperText-root': {

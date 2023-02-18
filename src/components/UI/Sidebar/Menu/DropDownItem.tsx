@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import {
-  Box, ListItem, ListItemIcon, ListItemButton, Typography
+  Box, ListItem, ListItemIcon, ListItemButton, Typography, styled
 } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
 import { MenuItemTS } from '@utils/types'
-import styled from '@emotion/styled'
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material'
 
 interface DropDownItemProps {
