@@ -14,51 +14,59 @@ import { ROUTES } from '@utils/constants'
 import { LoadingButton } from '@mui/lab'
 import { useLogin } from '../../../services/auth.service'
 
-const SignWrapper = styled(Box)`
-  width: 350px;
-  background-color: #fff;
-  padding: 20px 30px;
-  border-radius: 6px;
-`
-const Title = styled(Typography)`
-  padding: 60px 0 30px;
-  font-weight: bold;
-  color: dimgray;
-  border-bottom: 1px solid lightgray;
-`
-const Subtitle = styled(Typography)`
-  padding: 30px;
-  color: dimgray;
-`
-const PrimaryButton = styled(LoadingButton)`
-  width: 100%;
-  font-size: 14px;
-  padding: 7px 10px;
-  text-transform: none;
-  color: white;
-  background-color: #0775b4;
+const SignWrapper = styled(Box)(({ theme }) => ({
+  width: '350px',
+  backgroundColor: theme.palette.white,
+  padding: '20px 30px',
+  borderRadius: '6px',
+}))
 
-  :disabled {
-    color: white;
-    opacity: 0.6;
+const Title = styled(Typography)(({ theme }) => ({
+  padding: '60px 0 30px',
+  fontWeight: 'bold',
+  color: theme.palette.disabled,
+  borderBottom: `1px solid ${theme.palette.bgr}`,
+}))
+
+const  Subtitle = styled(Typography)(({ theme }) => ({
+  padding: '30px',
+  color: theme.palette.disabled,
+}))
+
+const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
+  width: '100%',
+  fontSize: '14px',
+  padding: '7px 10px',
+  textTransform: 'none',
+  color: theme.palette.white,
+  backgroundColor: theme.palette.blue,
+
+  '&:disabled': {
+    color: theme.palette.white,
+    opacity: 0.6,
+  },
+
+  '&:hover': {
+    color: theme.palette.white,
+    backgroundColor: theme.palette.blue,
+  },
+
+
+}))
+
+const SecondaryButton = styled(PrimaryButton)(({ theme }) => ({
+  backgroundColor: theme.palette.white,
+  color: theme.palette.blue,
+  padding: '7px 10px',
+
+  '&:hover': {
+    backgroundColor: theme.palette.white,
+    color: theme.palette.blue,
+    borderColor: theme.palette.blue,
   }
 
-  :hover {
-    color: white;
-    background-color: #1976d2;
-  }
-`
-const SecondaryButton = styled(PrimaryButton)`
-  background-color: white;
-  color: #0775b4;
-  padding: 7px 10px;
+}))
 
-  :hover {
-    background-color: white;
-    color: #1976d2;
-    border-color: #1976d2;
-  }
-`
 
 export const AuthForm = () => {
   const navigate = useNavigate()
