@@ -1,12 +1,12 @@
-import styled from '@emotion/styled'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import { UserCard } from './UserCard'
 
-const Title = styled(Typography)`
-  color: white;
-  font-size: 24px;
-  padding: 30px 0 0;
-`
+const Title = styled(Typography)(({ theme }) => ({
+  color: theme.palette.white,
+  fontSize: '24px',
+  padding: '30px 0 0'
+}))
+
 
 export const Header = () => {
   return (

@@ -1,34 +1,36 @@
 import { AuthContext } from '@components/Contexts/AuthContext'
-import styled from '@emotion/styled'
-import { Typography } from '@mui/material'
+import { Typography, styled } from '@mui/material'
 import { Box } from '@mui/system'
 import { useContext } from 'react'
 
-const SUserCard = styled(Box)`
-  width: 100%;
-  border-top: 1px solid lightgray;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-`
-const UserIcon = styled(Box)`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  font-size: 32px;
-  font-weight: bold;
-  color: #0775b4;
-`
-const UserName = styled(Typography)`
-  font-size: 18px;
-  color: white;
-`
+
+const SUserCard = styled(Box)(({ theme }) => ({
+  width: '100%',
+  borderTop: `1px solid ${theme.palette.bgr}`,
+  display: 'flex',
+  gap: '15px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '20px 0'
+}))
+
+const UserIcon = styled(Box)(({ theme }) => ({
+  width: '50px',
+  height: '50px',
+  borderRadius: '50%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: theme.palette.white,
+  fontSize: '32px',
+  fontWeight: 'bold',
+  color: theme.palette.blue
+}))
+
+const UserName = styled(Typography)(({ theme }) => ({
+  fontSize: '18px',
+  color: theme.palette.white
+}))
 
 export const UserCard = () => {
   const { user } = useContext(AuthContext)

@@ -23,27 +23,30 @@ const menuData = {
     },
   ],
 }
+const MenuWrapper = styled(Box)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  borderTop: `1px solid ${theme.palette.bgr}`,
+  padding: '20px 0',
+}))
 
-const MenuWrapper = styled(Box)`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-top: 1px solid lightgray;
-  padding: 20px 0;
-`
-const SMenuList = styled(MenuList)`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 6px;
-`
-const SMenuItem = styled(MenuItem)`
-  width: 100%;
-  padding: 0;
-  margin: 0;
-`
+const SMenuList = styled(MenuList)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  borderRadius: '6px',
+
+}))
+
+const SMenuItem = styled(MenuItem)(({ theme }) => ({
+  width: '100%',
+  padding: 0,
+  margin: 0,
+}))
+
 
 export const Menu = () => {
   const { items } = menuData

@@ -1,33 +1,28 @@
-import { Box, Button } from '@mui/material'
-import { useContext } from 'react'
-import { AuthContext } from '@components/Contexts/AuthContext'
-import { Link } from 'react-router-dom'
-import { ROUTES } from '@utils/constants'
-import styled from '@emotion/styled'
+import { Box, Button, styled } from '@mui/material';
+import { useContext } from 'react';
+import { AuthContext } from '@components/Contexts/AuthContext';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '@utils/constants';
 
-const PrimaryButton = styled(Button)`
-  width: 100%;
-  font-size: 14px;
-  padding: 7px 10px;
-  text-transform: none;
-  color: #0775b4;
-  background-color: white;
-
-  :hover {
-    background-color: whitesmoke;
-  }
-`
+const PrimaryButton = styled(Button)(({ theme }) => ({
+  width: '100%',
+  fontSize: 14,
+  padding: '7px 10px',
+  textTransform: 'none',
+  color: theme.palette.blue,
+  backgroundColor: theme.palette.white,
+  '&:hover': {
+    backgroundColor: theme.palette.bgr,
+  },
+}));
 
 export const Footer = () => {
-  const { user, logout } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <Box sx={{ marginTop: 'auto', width: '100%' }}>
       {user ? (
-        <PrimaryButton
-          onClick={logout}
-          variant='contained'
-        >
+        <PrimaryButton onClick={logout} variant='contained'>
           Log Out
         </PrimaryButton>
       ) : (
@@ -36,5 +31,5 @@ export const Footer = () => {
         </Link>
       )}
     </Box>
-  )
-}
+  );
+};

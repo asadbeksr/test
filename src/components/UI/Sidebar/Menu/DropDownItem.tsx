@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  Box, ListItem, ListItemIcon, ListItemButton, Typography 
+  Box, ListItem, ListItemIcon, ListItemButton, Typography
 } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
 import { MenuItemTS } from '@utils/types'
@@ -11,45 +11,45 @@ interface DropDownItemProps {
   item: MenuItemTS
 }
 
-const ListWrapper = styled(Box)`
-  width: 100%;
-`
-const SListItemButton = styled(ListItemButton)`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 5px;
-  font-size: 14px;
-  color: white;
-  padding: 5px 10px;
+const ListWrapper = styled(Box)(({ theme }) => ({
+  width: '100%',
 
-  svg {
-    fill: white;
+}))
+
+const SListItemButton = styled(ListItemButton)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  gap: '5px',
+  fontSize: '14px',
+  color: theme.palette.white,
+  svg: {
+    fill: theme.palette.white
   }
-`
-const SListItem = styled(ListItem)`
-  width: 100%;
+}))
 
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-`
-const LinkItem = styled(Link)`
-  text-align: start;
-  width: 100%;
+const SListItem = styled(ListItem)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  padding: 0,
+  margin: 0,
+}))
 
-  p {
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: white;
-  }
-`
-const SListItemIcon = styled(ListItemIcon)`
-  display: flex;
-  justify-content: end;
-`
+const LinkItem = styled(Link)(({ theme }) => ({
+  textAlign: 'start',
+  width: '100%',
+  p: {
+    borderRadius: '6px',
+    padding: '5px 10px',
+    fontSize: '14px',
+    color: theme.palette.white
+}}))
+
+const SListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'end',
+}))
 
 export const DropDownItem = ({ item }: DropDownItemProps) => {
   const { pathname } = useLocation()
