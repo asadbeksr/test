@@ -51,4 +51,41 @@ describe('AuthForm', () => {
 
     await waitFor(() => expect(loginButton).toBeEnabled());
   });
+
+
+  test('display error when login fails', async () => {
+    const loginButton = screen.getByTestId('login-button');
+    const usernameInput = screen.getByLabelText('Username');
+    const passwordInput = screen.getByLabelText('Password');
+
+    fireEvent.change(usernameInput, { target: { value: 'kminchelle' } });
+    fireEvent.change(passwordInput, { target: { value: '0lelplR' } });
+
+    fireEvent.click(loginButton);
+
+    expect(localStorage.getItem('user')).toBe('null');
+  });
+
+  test('successfully logs in', async () => {
+    const loginButton = screen.getByTestId('login-button');
+    const usernameInput = screen.getByLabelText('Username');
+    const passwordInput = screen.getByLabelText('Password');
+
+    fireEvent.change(usernameInput, { target: { value: 'kminchelle' } });
+    fireEvent.change(passwordInput, { target: { value: '0lelplR' } });
+
+    fireEvent.click(loginButton);
+
+    expect(localStorage.getItem('user')).toBeTruthy();
+  });
+
+  test('cancel button redirects to home page', async () => {
+    const cancelButton = screen.getByTestId('cancel-button')
+    expect(cancelButton).toBeInTheDocument();
+
+    fireEvent.click(cancelButton);
+
+    expect(window.location.pathname).toBe('/');
+  });
+
 });

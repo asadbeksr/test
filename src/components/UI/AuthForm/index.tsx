@@ -154,6 +154,7 @@ export const AuthForm = () => {
           Log In
         </PrimaryButton>
         <SecondaryButton
+         data-testid='cancel-button'
           variant='outlined'
           onClick={() => navigate(-1)}
         >
