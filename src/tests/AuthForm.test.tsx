@@ -1,7 +1,6 @@
-import { render, screen } from '@testing-library/react'
-import { AuthForm } from '@components/UI/AuthForm'
-import MainProvider from '@components/Providers'
-import userEvent from '@testing-library/user-event'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { AuthForm } from '@components/UI/AuthForm';
+import MainProvider from '@components/Providers';
 
 describe('AuthForm', () => {
   beforeEach(() => {
@@ -9,37 +8,47 @@ describe('AuthForm', () => {
       <MainProvider>
         <AuthForm />
       </MainProvider>
-    )
-  })
+    );
+  });
 
-  it('render auth form', () => {
-    expect(screen.getByTestId('auth-form')).toBeInTheDocument()
-  })
+  test('renders auth form', () => {
+    const authForm = screen.getByTestId('auth-form');
+    expect(authForm).toBeInTheDocument();
+  });
 
-  it('render a log ln button', () => {
-    expect(screen.getByTestId('login-button').closest('button')).toBeInTheDocument()
-  })
+  test('renders a login button', () => {
+    const loginButton = screen.getByTestId('login-button').closest('button');
+    expect(loginButton).toBeInTheDocument();
+  });
 
-  it('fill username', async() => {
-    await userEvent.click(screen.getByLabelText('Username'))
-    await userEvent.type(screen.getByLabelText('Username'), 'username')
+  test('fills in the username input', async () => {
+    const usernameInput = screen.getByLabelText('Username');
+    expect(usernameInput).toHaveValue('');
 
-    expect(screen.getByLabelText('Username')).toHaveValue('username')
-  })
+    fireEvent.change(usernameInput, { target: { value: 'username' } });
 
-  it('fill password', async() => {
-    await userEvent.click(screen.getByLabelText('Password'))
-    await userEvent.type(screen.getByLabelText('Password'), 'password')
+    expect(usernameInput).toHaveValue('username');
+  });
 
-    expect(screen.getByLabelText('Password')).toHaveValue('password')
-  })
+  test('fills in the password input', async () => {
+    const passwordInput = screen.getByLabelText('Password');
+    expect(passwordInput).toHaveValue('');
 
-  it('login button enabled', async() => {
-    await userEvent.click(screen.getByLabelText('Password'))
-    await userEvent.type(screen.getByLabelText('Password'), 'password')
-    await userEvent.click(screen.getByLabelText('Username'))
-    await userEvent.type(screen.getByLabelText('Username'), 'username')
+    fireEvent.change(passwordInput, { target: { value: 'password' } });
 
-    expect(screen.getByTestId('login-button').closest('button')).not.toBeDisabled()
-  })
-})
+    expect(passwordInput).toHaveValue('password');
+  });
+
+  test('enables login button when both username and password are filled in', async () => {
+    const loginButton = screen.getByTestId('login-button');
+    const usernameInput = screen.getByLabelText('Username');
+    const passwordInput = screen.getByLabelText('Password');
+
+    expect(loginButton).toBeDisabled();
+
+    fireEvent.change(usernameInput, { target: { value: 'username' } });
+    fireEvent.change(passwordInput, { target: { value: 'password' } });
+
+    await waitFor(() => expect(loginButton).toBeEnabled());
+  });
+});
