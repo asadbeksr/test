@@ -55,7 +55,7 @@ export const Menu = () => {
       <SMenuList>
         {items.map((item, index) => (
           <SMenuItem
-            component='ul'
+            as='ul'
             key={index}
           >
             <DropDownItem item={item} />
