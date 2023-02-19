@@ -27,12 +27,12 @@ describe('Sidebar component', () => {
   });
 
   test('render sidebar footer', () => {
-    const logoutButton = screen.getByTestId('login-button-sidebar');
+    const logoutButton = screen.getByRole('button', { name: /log out/i });
     expect(logoutButton).toBeInTheDocument();
   });
 
   test('render log out if user is logged in otherwise render log in', () => {
-    const loginButton = screen.getByTestId('login-button-sidebar');
+    const loginButton = screen.getByRole('button', { name: /log in/i });
     const user = localStorage.getItem('user');
     if (user !== 'null') {
       expect(loginButton).not.toBeInTheDocument();
