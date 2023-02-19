@@ -6,7 +6,7 @@ describe('Navigation', () => {
   test('navigation to homepage', () => {
     render(<App />, { wrapper: BrowserRouter })
 
-    const homeLink = screen.getByRole('link', { name: 'Home' });
+    const homeLink = screen.getByRole('link', { name: /Home/i });
     expect(homeLink).toBeInTheDocument();
     fireEvent.click(homeLink);
     expect(screen.getByText('Home Page')).toBeInTheDocument();
@@ -15,12 +15,12 @@ describe('Navigation', () => {
   test('navigation to company page', () => {
     render(<App />, { wrapper: BrowserRouter })
 
-    const aboutLink = screen.getByRole('button', { name: 'About' });
+    const aboutLink = screen.getByRole('button', { name: /About/i });
     expect(aboutLink).toBeInTheDocument();
     fireEvent.click(aboutLink);
     expect(screen.getByText('Company')).toBeInTheDocument();
 
-    const companyLink = screen.getByRole('link', { name: 'Company' });
+    const companyLink = screen.getByRole('link', { name: /Company/i });
     expect(companyLink).toBeInTheDocument();
     fireEvent.click(companyLink);
     expect(screen.getByText('Company Page')).toBeInTheDocument();
@@ -29,12 +29,12 @@ describe('Navigation', () => {
   test('navigation to team page', () => {
     render(<App />, { wrapper: BrowserRouter })
 
-    const aboutLink = screen.getByRole('button', { name: 'About' });
+    const aboutLink = screen.getByRole('button', { name: /About/i });
     expect(aboutLink).toBeInTheDocument();
     fireEvent.click(aboutLink);
     expect(screen.getByText('Team')).toBeInTheDocument();
 
-    const teamLink = screen.getByRole('link', { name: 'Team' });
+    const teamLink = screen.getByRole('link', { name: /Team/i });
     expect(teamLink).toBeInTheDocument();
     fireEvent.click(teamLink);
     expect(screen.getByText('Team Page')).toBeInTheDocument();

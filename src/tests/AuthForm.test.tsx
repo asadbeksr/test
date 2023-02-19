@@ -35,7 +35,7 @@ describe('AuthForm', () => {
   });
 
   test('enables login button when both username and password are filled in', async () => {
-    const loginButton = screen.getByRole('button', { name: 'Log In' });
+    const loginButton = screen.getByRole('button', { name: /log in/i });
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
 
@@ -48,12 +48,12 @@ describe('AuthForm', () => {
   });
 
   test('renders a login button', () => {
-    const loginButton = screen.getByRole('button', { name: 'Log In' });
+    const loginButton = screen.getByRole('button', { name: /log in/i });
     expect(loginButton).toBeInTheDocument();
   });
 
   test('display error when login fails', async () => {
-    const loginButton = screen.getByRole('button', { name: 'Log In' });
+    const loginButton = screen.getByRole('button', { name: /log in/i });
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
 
@@ -66,7 +66,7 @@ describe('AuthForm', () => {
   });
 
   test('successfully logs in', async () => {
-    const loginButton = screen.getByRole('button', { name: 'Log In' });
+    const loginButton = screen.getByRole('button', { name: /log in/i });
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
 
