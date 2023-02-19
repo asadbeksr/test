@@ -27,7 +27,7 @@ const MenuWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  borderTop: `1px solid ${theme.palette.bgr}`,
+  borderTop: `1px solid ${theme.palette.gray.light}`,
   padding: '20px 0',
 }))
 

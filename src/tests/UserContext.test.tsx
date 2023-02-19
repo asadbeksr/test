@@ -39,7 +39,9 @@ describe('Sidebar', () => {
     render(
       <BrowserRouter>
         <AuthContext.Provider value={user}>
-          <Sidebar />
+         <ThemeProvider theme={theme}>
+            <Sidebar />
+          </ThemeProvider>
         </AuthContext.Provider>
       </BrowserRouter>
     );

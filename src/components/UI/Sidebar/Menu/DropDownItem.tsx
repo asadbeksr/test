@@ -23,6 +23,7 @@ const SListItemButton = styled(ListItemButton)(({ theme }) => ({
   gap: '5px',
   fontSize: '14px',
   color: theme.palette.white,
+  padding: '5px 10px',
   svg: {
     fill: theme.palette.white
   }

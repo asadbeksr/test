@@ -1,19 +1,31 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
-import App from 'src/App'
+import { fireEvent, render, screen } from '@testing-library/react';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '../theme';
+import App from 'src/App';
 
 describe('Navigation', () => {
   test('navigation to homepage', () => {
-    render(<App />, { wrapper: BrowserRouter })
+    render(
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>,
+      { wrapper: BrowserRouter }
+    );
 
     const homeLink = screen.getByRole('link', { name: /Home/i });
     expect(homeLink).toBeInTheDocument();
     fireEvent.click(homeLink);
     expect(screen.getByText('Home Page')).toBeInTheDocument();
-  })
+  });
 
   test('navigation to company page', () => {
-    render(<App />, { wrapper: BrowserRouter })
+    render(
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>,
+      { wrapper: BrowserRouter }
+    );
 
     const aboutLink = screen.getByRole('button', { name: /About/i });
     expect(aboutLink).toBeInTheDocument();
@@ -24,10 +36,15 @@ describe('Navigation', () => {
     expect(companyLink).toBeInTheDocument();
     fireEvent.click(companyLink);
     expect(screen.getByText('Company Page')).toBeInTheDocument();
-  })
+  });
 
   test('navigation to team page', () => {
-    render(<App />, { wrapper: BrowserRouter })
+    render(
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>,
+      { wrapper: BrowserRouter }
+    );
 
     const aboutLink = screen.getByRole('button', { name: /About/i });
     expect(aboutLink).toBeInTheDocument();
@@ -38,17 +55,19 @@ describe('Navigation', () => {
     expect(teamLink).toBeInTheDocument();
     fireEvent.click(teamLink);
     expect(screen.getByText('Team Page')).toBeInTheDocument();
-  })
+  });
 
   test('navigation to bad page', () => {
-    const badRoute = '/some/bad/route'
+    const badRoute = '/some/bad/route';
 
     render(
       <MemoryRouter initialEntries={[badRoute]}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </MemoryRouter>
-    )
+    );
 
     expect(screen.getByText('Not Found')).toBeInTheDocument();
-  })
-})
+  });
+});
