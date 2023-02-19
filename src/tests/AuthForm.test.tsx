@@ -16,11 +16,6 @@ describe('AuthForm', () => {
     expect(authForm).toBeInTheDocument();
   });
 
-  test('renders a login button', () => {
-    const loginButton = screen.getByTestId('login-button').closest('button');
-    expect(loginButton).toBeInTheDocument();
-  });
-
   test('fills in the username input', async () => {
     const usernameInput = screen.getByLabelText('Username');
     expect(usernameInput).toHaveValue('');
@@ -40,7 +35,7 @@ describe('AuthForm', () => {
   });
 
   test('enables login button when both username and password are filled in', async () => {
-    const loginButton = screen.getByTestId('login-button');
+    const loginButton = screen.getByRole('button', { name: 'Log In' });
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
 
@@ -52,9 +47,13 @@ describe('AuthForm', () => {
     await waitFor(() => expect(loginButton).toBeEnabled());
   });
 
+  test('renders a login button', () => {
+    const loginButton = screen.getByRole('button', { name: 'Log In' });
+    expect(loginButton).toBeInTheDocument();
+  });
 
   test('display error when login fails', async () => {
-    const loginButton = screen.getByTestId('login-button');
+    const loginButton = screen.getByRole('button', { name: 'Log In' });
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
 
@@ -67,7 +66,7 @@ describe('AuthForm', () => {
   });
 
   test('successfully logs in', async () => {
-    const loginButton = screen.getByTestId('login-button');
+    const loginButton = screen.getByRole('button', { name: 'Log In' });
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
 
@@ -80,12 +79,11 @@ describe('AuthForm', () => {
   });
 
   test('cancel button redirects to home page', async () => {
-    const cancelButton = screen.getByTestId('cancel-button')
+    const cancelButton = screen.getByRole('button', { name: /cancel/i });
     expect(cancelButton).toBeInTheDocument();
 
     fireEvent.click(cancelButton);
 
     expect(window.location.pathname).toBe('/');
   });
-
 });
