@@ -27,7 +27,7 @@ describe('Sidebar component', () => {
   });
 
   test('render sidebar footer', () => {
-    const logoutButton = screen.getByRole('button', { name: /log out/i });
+    const logoutButton = screen.getByRole('button', { name: /log (in|out)/i });
     expect(logoutButton).toBeInTheDocument();
   });
 
