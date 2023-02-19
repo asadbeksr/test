@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import MainProvider from '@components/Providers';
 import Sidebar from '@ui/Sidebar';
+import { menuData } from '@ui/Sidebar/Menu/menuData';
 
 describe('Sidebar component', () => {
   beforeEach(() => {
@@ -25,6 +26,35 @@ describe('Sidebar component', () => {
     const menu = screen.getByTestId('sidebar-menu');
     expect(menu).toBeInTheDocument();
   });
+
+  test('render sidebar menu items', () => {
+    const { items } = menuData;
+  
+    const menu = screen.getByTestId('sidebar-menu');
+    expect(menu).toBeInTheDocument();
+  
+    items.forEach((item) => {
+      
+      if (item.items) {
+
+        const button = screen.getByRole('button', { name: item.label });
+        expect(button).toBeInTheDocument();
+
+        fireEvent.click(button);
+
+        item.items.forEach((dropdownItem) => {
+          const dropdownButton = screen.getByRole('link', { name: dropdownItem.label });
+          expect(dropdownButton).toBeInTheDocument();
+        });
+
+      }
+       else {
+        const button = screen.getByRole('link', { name: item.label });
+        expect(button).toBeInTheDocument();
+      }
+    });
+  });
+  
 
   test('render sidebar footer', () => {
     const logoutButton = screen.getByRole('button', { name: /log (in|out)/i });

@@ -1,27 +1,7 @@
 import { Box, MenuItem, MenuList, styled } from '@mui/material'
 import { DropDownItem } from '@components/UI/Sidebar/Menu/DropDownItem'
+import { menuData } from './menuData';
 
-const menuData = {
-  items: [
-    {
-      label: 'Home',
-      href: '/',
-    },
-    {
-      label: 'About',
-      items: [
-        {
-          label: 'Company',
-          href: '/about/company',
-        },
-        {
-          label: 'Team',
-          href: '/about/main-team',
-        },
-      ],
-    },
-  ],
-}
 const MenuWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   display: 'flex',
