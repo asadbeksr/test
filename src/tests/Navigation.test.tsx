@@ -6,29 +6,38 @@ describe('Navigation', () => {
   test('navigation to homepage', () => {
     render(<App />, { wrapper: BrowserRouter })
 
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('Home'))
-    expect(screen.getByText('Home Page')).toBeInTheDocument()
+    const homeLink = screen.getByRole('link', { name: 'Home' });
+    expect(homeLink).toBeInTheDocument();
+    fireEvent.click(homeLink);
+    expect(screen.getByText('Home Page')).toBeInTheDocument();
   })
 
   test('navigation to company page', () => {
     render(<App />, { wrapper: BrowserRouter })
 
-    expect(screen.getByText('About')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('About'))
-    expect(screen.getByText('Company')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('Company'))
-    expect(screen.getByText('Company Page')).toBeInTheDocument()
+    const aboutLink = screen.getByRole('button', { name: 'About' });
+    expect(aboutLink).toBeInTheDocument();
+    fireEvent.click(aboutLink);
+    expect(screen.getByText('Company')).toBeInTheDocument();
+
+    const companyLink = screen.getByRole('link', { name: 'Company' });
+    expect(companyLink).toBeInTheDocument();
+    fireEvent.click(companyLink);
+    expect(screen.getByText('Company Page')).toBeInTheDocument();
   })
 
   test('navigation to team page', () => {
     render(<App />, { wrapper: BrowserRouter })
 
-    expect(screen.getByText('About')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('About'))
-    expect(screen.getByText('Team')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('Team'))
-    expect(screen.getByText('Team Page')).toBeInTheDocument()
+    const aboutLink = screen.getByRole('button', { name: 'About' });
+    expect(aboutLink).toBeInTheDocument();
+    fireEvent.click(aboutLink);
+    expect(screen.getByText('Team')).toBeInTheDocument();
+
+    const teamLink = screen.getByRole('link', { name: 'Team' });
+    expect(teamLink).toBeInTheDocument();
+    fireEvent.click(teamLink);
+    expect(screen.getByText('Team Page')).toBeInTheDocument();
   })
 
   test('navigation to bad page', () => {
@@ -40,6 +49,6 @@ describe('Navigation', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText('Not Found')).toBeInTheDocument()
+    expect(screen.getByText('Not Found')).toBeInTheDocument();
   })
 })
